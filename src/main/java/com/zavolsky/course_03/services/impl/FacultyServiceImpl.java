@@ -28,7 +28,7 @@ public class FacultyServiceImpl implements FacultyService {
     }
 
     public Collection<Faculty> getAllByColor(String color) {
-        return facultyRepository.findAll();
+        return facultyRepository.findAllByColor(color);
     }
 
     public Faculty get(Long id) {

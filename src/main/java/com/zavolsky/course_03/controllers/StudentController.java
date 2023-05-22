@@ -1,5 +1,6 @@
 package com.zavolsky.course_03.controllers;
 
+import com.zavolsky.course_03.exceptions.RequestErrorException;
 import com.zavolsky.course_03.models.Student;
 import com.zavolsky.course_03.repositories.StudentRepository;
 import com.zavolsky.course_03.services.StudentService;
@@ -32,10 +33,10 @@ public class StudentController {
 
     @GetMapping(path = "/get/{id}")
     public ResponseEntity<Student> get(@PathVariable("id") Long id) {
-        Student student = studentService.get(id);
-        if (student == null) {
-            return ResponseEntity.notFound().build();
+        if (id == null) {
+            throw new RequestErrorException("Id can't be empty.");
         }
+        Student student = studentService.get(id);
         return ResponseEntity.ok(student);
     }
 

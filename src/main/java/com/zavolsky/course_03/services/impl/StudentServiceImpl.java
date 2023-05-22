@@ -39,7 +39,7 @@ public class StudentServiceImpl implements StudentService {
     }
 
     public void remove(Long id) {
-        Student student = studentRepository.getReferenceById(id);
+        Student student = studentRepository.findById(id).get();
         studentRepository.delete(student);
     }
 

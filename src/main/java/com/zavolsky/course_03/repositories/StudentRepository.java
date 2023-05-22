@@ -5,11 +5,11 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
-import java.util.List;
+import java.util.Collection;
 
 public interface StudentRepository extends JpaRepository<Student, Long> {
 
-    @Query("SELECT id, name, age from students where age = :age")
-    List<Student> findAllByAge(@Param("age") final Integer age);
+    @Query(value = "SELECT s FROM Student s WHERE s.age = :age")
+    Collection<Student> findAllByAge(@Param("age") final Integer age);
 
 }

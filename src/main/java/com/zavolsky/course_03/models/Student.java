@@ -3,8 +3,10 @@ package com.zavolsky.course_03.models;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
-@Entity(name = "students")
+@Entity
+@Table(name = "students", schema = "public")
 public class Student {
 
     @Id

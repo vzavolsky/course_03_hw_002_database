@@ -1,5 +1,6 @@
 package com.zavolsky.course_03.controllers;
 
+import com.zavolsky.course_03.exceptions.RequestErrorException;
 import com.zavolsky.course_03.models.Faculty;
 import com.zavolsky.course_03.services.FacultyService;
 import com.zavolsky.course_03.services.impl.FacultyServiceImpl;
@@ -30,6 +31,9 @@ public class FacultyController {
 
     @GetMapping(path = "/get/{id}")
     public Faculty get(@PathVariable("id") Long id) {
+        if (id == null) {
+            throw new RequestErrorException("Id can't be empty.");
+        }
         return facultyService.get(id);
     }
 
@@ -43,6 +47,9 @@ public class FacultyController {
 
     @GetMapping(path = "/remove/{id}")
     public Faculty remove(@PathVariable("id") Long id) {
+        if (id == null) {
+            throw new RequestErrorException("Id can't be empty.");
+        }
         return facultyService.remove(id);
     }
 
