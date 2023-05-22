@@ -48,7 +48,7 @@ public class StudentController {
     }
 
     @GetMapping(path = "/remove/{id}")
-    public ResponseEntity remove(@PathVariable("id") Long id) {
+    public ResponseEntity<Student> remove(@PathVariable("id") Long id) {
         studentService.remove(id);
         return ResponseEntity.ok().build();
     }

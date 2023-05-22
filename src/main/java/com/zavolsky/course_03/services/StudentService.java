@@ -11,7 +11,7 @@ public interface StudentService {
 
     Student add(String name, int age);
 
-    Collection getAll();
+    Collection<Student> getAll();
 
     Student get(Long id);
 

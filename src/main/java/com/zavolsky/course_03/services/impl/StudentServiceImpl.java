@@ -23,12 +23,12 @@ public class StudentServiceImpl implements StudentService {
         return studentRepository.save(student);
     }
 
-    public Collection getAll() {
+    public Collection<Student> getAll() {
         return studentRepository.findAll();
     }
 
     public Student get(Long id) {
-        return studentRepository.getReferenceById(id);
+        return studentRepository.findById(id).get();
     }
 
     public Student update(Long id, String name, int age) {
@@ -44,7 +44,7 @@ public class StudentServiceImpl implements StudentService {
     }
 
     public Collection<Student> getAllByAge(Integer age) {
-        return studentRepository.findAll();
+        return studentRepository.findAllByAge(age);
     }
 
 }

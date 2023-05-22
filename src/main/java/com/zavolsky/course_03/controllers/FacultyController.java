@@ -5,6 +5,7 @@ import com.zavolsky.course_03.services.FacultyService;
 import com.zavolsky.course_03.services.impl.FacultyServiceImpl;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Collection;
 import java.util.Map;
 
 @RestController
@@ -23,7 +24,7 @@ public class FacultyController {
     }
 
     @GetMapping(path = "/get")
-    public Map<Long, Faculty> getAll(@RequestParam(value = "color", required = false) String color) {
+    public Collection<Faculty> getAll(@RequestParam(value = "color", required = false) String color) {
         return color == null ? facultyService.getAll() : facultyService.getAllByColor(color);
     }
 

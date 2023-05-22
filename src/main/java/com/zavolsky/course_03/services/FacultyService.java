@@ -2,7 +2,7 @@ package com.zavolsky.course_03.services;
 
 import com.zavolsky.course_03.models.Faculty;
 
-import java.util.HashMap;
+import java.util.Collection;
 import java.util.Map;
 
 public interface FacultyService {
@@ -11,7 +11,7 @@ public interface FacultyService {
 
     public Faculty add(String name, String color);
 
-    public Map<Long, Faculty> getAll();
+    public Collection<Faculty> getAll();
 
     public Faculty get(Long id);
 
@@ -19,6 +19,6 @@ public interface FacultyService {
 
     public Faculty remove(Long id);
 
-    Map<Long, Faculty> getAllByColor(String color);
+    Collection<Faculty> getAllByColor(String color);
 
 }

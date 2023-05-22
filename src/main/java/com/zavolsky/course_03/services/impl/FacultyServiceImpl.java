@@ -1,32 +1,34 @@
 package com.zavolsky.course_03.services.impl;
 
 import com.zavolsky.course_03.models.Faculty;
+import com.zavolsky.course_03.repositories.FacultyRepository;
 import com.zavolsky.course_03.services.FacultyService;
 import org.springframework.stereotype.Service;
 
-import java.util.HashMap;
-import java.util.Map;
-import java.util.stream.Collectors;
+import java.util.Collection;
 
 @Service
 public class FacultyServiceImpl implements FacultyService {
 
-    private final Map<Long, Faculty> faculties = new HashMap();
+    private final FacultyRepository facultyRepository;
+    Faculty faculty = new Faculty();
+
+    public FacultyServiceImpl(FacultyRepository facultyRepository) {
+        this.facultyRepository = facultyRepository;
+    }
 
     public Faculty add(String name, String color) {
         Faculty faculty = new Faculty(name,color);
-        faculties.put(faculty.getId(), faculty);
+        facultyRepository.save(faculty);
         return faculty;
     }
 
-    public Map<Long, Faculty> getAll() {
-        return faculties;
+    public Collection<Faculty> getAll() {
+        return facultyRepository.findAll();
     }
 
-    public Map<Long, Faculty> getAllByColor(String color) {
-        return faculties.entrySet().stream()
-                .filter(faculty -> faculty.getValue().getColor() == color)
-                .collect(Collectors.toMap(f -> f.getKey(), f -> f.getValue()));
+    public Collection<Faculty> getAllByColor(String color) {
+        return facultyRepository.findAll();
     }
 
     public Faculty get(Long id) {

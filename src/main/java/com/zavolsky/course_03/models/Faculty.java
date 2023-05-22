@@ -1,15 +1,28 @@
 package com.zavolsky.course_03.models;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+
+@Entity(name = "faculties")
 public class Faculty {
 
-    private static Long idInc = 0L;
-    private Long id = ++idInc;
+    @Id
+    @GeneratedValue
+    private Long id;
+
     private String name;
     String color;
 
     public Faculty(String name, String color) {
         this.name = name;
         this.color = color;
+    }
+
+    public Faculty() {}
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public Long getId() {
