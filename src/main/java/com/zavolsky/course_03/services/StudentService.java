@@ -1,23 +1,38 @@
 package com.zavolsky.course_03.services;
 
 import com.zavolsky.course_03.models.Student;
+import com.zavolsky.course_03.repositories.StudentRepository;
+import org.springframework.stereotype.Service;
 
 import java.util.Collection;
-import java.util.Map;
 
-public interface StudentService {
+@Service
+public class StudentService {
 
-    final Map<Long, Student> students = null;
+    private final StudentRepository studentRepository;
 
-    Student add(String name, int age);
+    public StudentService(StudentRepository studentRepository) {
+        this.studentRepository = studentRepository;
+    }
 
-    Collection<Student> getAll();
+    public Student add(Student student) {
+        return studentRepository.save(student);
+    }
 
-    Student get(Long id);
+    public Student get(Long id) {
+        return studentRepository.findById(id).get();
+    }
 
-    Student update(Long id, String name, int age);
+    public Student update(Student student) {
+        return studentRepository.save(student);
+    }
 
-    void remove(Long id);
+    public void remove(Student student) {
+        studentRepository.delete(student);
+    }
 
-    Collection<Student> getAllByAge(Integer age);
+    public Collection<Student> findAll() {
+        return studentRepository.findAll();
+    }
+
 }

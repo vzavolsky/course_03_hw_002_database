@@ -16,13 +16,6 @@ public class Faculty {
     private String name;
     String color;
 
-    public Faculty(String name, String color) {
-        this.name = name;
-        this.color = color;
-    }
-
-    public Faculty() {}
-
     public void setId(Long id) {
         this.id = id;
     }
@@ -46,4 +39,5 @@ public class Faculty {
     public void setColor(String color) {
         this.color = color;
     }
+
 }
