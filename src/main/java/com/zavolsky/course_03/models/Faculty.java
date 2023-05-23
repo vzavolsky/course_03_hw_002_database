@@ -3,9 +3,8 @@ package com.zavolsky.course_03.models;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.Table;
 
-@Entity
+@Entity(name = "faculties")
 public class Faculty {
 
     @Id
