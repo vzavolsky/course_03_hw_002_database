@@ -1,14 +1,11 @@
 package com.zavolsky.course_03.controllers;
 
-import com.zavolsky.course_03.exceptions.RequestErrorException;
 import com.zavolsky.course_03.models.Faculty;
 import com.zavolsky.course_03.services.FacultyService;
-import org.apache.catalina.users.SparseUserDatabase;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Collection;
-import java.util.Random;
 
 @RestController
 @RequestMapping(path = "/faculty")
