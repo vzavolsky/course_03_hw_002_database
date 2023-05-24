@@ -5,6 +5,8 @@ import com.zavolsky.course_03.repositories.StudentRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.Collection;
+import java.util.Collections;
+import java.util.Optional;
 
 @Service
 public class StudentService {
@@ -16,23 +18,33 @@ public class StudentService {
     }
 
     public Student add(Student student) {
+        student.setId(null);
         return studentRepository.save(student);
     }
 
-    public Student get(Long id) {
-        return studentRepository.findById(id).get();
+    public Optional<Student> get(Long id) {
+        return studentRepository.findById(id);
     }
 
-    public Student update(Student student) {
-        return studentRepository.save(student);
+    public Optional<Student> update(Long id, Student student) {
+        if (studentRepository.existsById(id)) {
+            student.setId(id);
+            return Optional.of(studentRepository.save(student));
+        }
+        return Optional.empty();
     }
 
-    public void remove(Student student) {
-        studentRepository.delete(student);
+    public Optional<Student> remove(Long id) {
+        if (studentRepository.existsById(id)) {
+            Student student = studentRepository.findById(id).get();
+            studentRepository.deleteById(id);
+            return Optional.of(student);
+        }
+        return Optional.empty();
     }
 
     public Collection<Student> findAll() {
-        return studentRepository.findAll();
+        return Collections.unmodifiableCollection(studentRepository.findAll());
     }
 
 }

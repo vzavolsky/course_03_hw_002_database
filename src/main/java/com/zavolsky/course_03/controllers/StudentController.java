@@ -2,13 +2,16 @@ package com.zavolsky.course_03.controllers;
 
 import com.zavolsky.course_03.models.Student;
 import com.zavolsky.course_03.services.StudentService;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Collection;
+import java.util.Optional;
 
 @RestController
 @RequestMapping(path = "/student")
+@Tag(name = "Student Controller", description = "UI for students.")
 public class StudentController {
 
     private StudentService studentService;
@@ -23,23 +26,23 @@ public class StudentController {
     }
 
     @GetMapping(path = "/{id}")
-    public ResponseEntity<Student> get(@PathVariable Long id) {
+    public ResponseEntity<Optional<Student>> get(@PathVariable Long id) {
         return ResponseEntity.ok(studentService.get(id));
     }
 
     @PostMapping
     public ResponseEntity<Student> add(@RequestBody Student student) {
-        return ResponseEntity.ok(studentService.update(student));
+        return ResponseEntity.ok(studentService.add(student));
     }
 
     @PutMapping
-    public ResponseEntity<Student> save(@RequestBody Student student) {
-        return ResponseEntity.ok(studentService.update(student));
+    public ResponseEntity<Optional<Student>> save(@RequestBody Long id, @RequestBody Student student) {
+        return ResponseEntity.ok(studentService.update(id, student));
     }
 
     @DeleteMapping
-    public ResponseEntity<Student> delete(@RequestBody Student student) {
-        studentService.remove(student);
+    public ResponseEntity<Student> delete(@RequestBody Long id) {
+        studentService.remove(id);
         return ResponseEntity.ok().build();
     }
 

@@ -1,18 +1,26 @@
 package com.zavolsky.course_03.models;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 
-@Entity(name = "faculties")
+@Entity
+@Table(name = "faculties")
 public class Faculty {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     private String name;
-    String color;
+    private String color;
+
+    public Faculty(Long id, String name, String color) {
+        this.id = id;
+        this.name = name;
+        this.color = color;
+    }
+
+    public Faculty() {
+    }
 
     public void setId(Long id) {
         this.id = id;
