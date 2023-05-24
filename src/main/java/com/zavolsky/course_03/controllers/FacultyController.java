@@ -42,8 +42,7 @@ public class FacultyController {
 
     @DeleteMapping
     public ResponseEntity<Optional<Faculty>> delete(@RequestBody Long id) {
-        facultyService.remove(id);
-        return ResponseEntity.ok().build();
+        return ResponseEntity.ok(facultyService.remove(id));
     }
 
 }
