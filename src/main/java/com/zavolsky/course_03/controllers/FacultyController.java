@@ -35,13 +35,13 @@ public class FacultyController {
         return ResponseEntity.ok(facultyService.add(faculty));
     }
 
-    @PutMapping
-    public ResponseEntity<Optional<Faculty>> update(@RequestBody Long id, @RequestBody Faculty faculty) {
+    @PutMapping(value = "/{id}")
+    public ResponseEntity<Optional<Faculty>> update(@PathVariable Long id, @RequestBody Faculty faculty) {
         return ResponseEntity.ok(facultyService.update(id, faculty));
     }
 
-    @DeleteMapping
-    public ResponseEntity<Optional<Faculty>> delete(@RequestBody Long id) {
+    @DeleteMapping(value = "/{id}")
+    public ResponseEntity<Optional<Faculty>> delete(@PathVariable Long id) {
         return ResponseEntity.ok(facultyService.remove(id));
     }
 

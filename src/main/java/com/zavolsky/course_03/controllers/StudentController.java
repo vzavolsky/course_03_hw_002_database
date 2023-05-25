@@ -25,7 +25,7 @@ public class StudentController {
         return ResponseEntity.ok(studentService.findAll());
     }
 
-    @GetMapping(path = "/{id}")
+    @GetMapping(value = "/{id}")
     public ResponseEntity<Optional<Student>> get(@PathVariable Long id) {
         return ResponseEntity.ok(studentService.get(id));
     }
@@ -35,13 +35,13 @@ public class StudentController {
         return ResponseEntity.ok(studentService.add(student));
     }
 
-    @PutMapping
-    public ResponseEntity<Optional<Student>> save(@RequestBody Long id, @RequestBody Student student) {
+    @PutMapping(value = "/{id}")
+    public ResponseEntity<Optional<Student>> save(@PathVariable Long id, @RequestBody Student student) {
         return ResponseEntity.ok(studentService.update(id, student));
     }
 
-    @DeleteMapping
-    public ResponseEntity<Optional<Student>> delete(@RequestBody Long id) {
+    @DeleteMapping(value = "/{id}")
+    public ResponseEntity<Optional<Student>> delete(@PathVariable Long id) {
         return ResponseEntity.ok(studentService.remove(id));
     }
 
